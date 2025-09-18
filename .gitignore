@@ -1,0 +1,8 @@
+.scons*
+.sconf_temp/
+100ms_left/
+45ms/
+__pycache__/
+build_release/
+config.log
+precice-profiling/
