@@ -46,13 +46,13 @@
     <write-data name="Velocity"  mesh="TendonMeshRight"/>
     <read-data  name="Traction"      mesh="TendonMeshRight"/>
 
-    <write-data name="Displacement"  mesh="TendonMeshLeft"/>
+    <!-- <write-data name="Displacement"  mesh="TendonMeshLeft"/>
     <write-data name="Velocity"  mesh="TendonMeshLeft"/>
-    <read-data  name="Traction"      mesh="TendonMeshLeft"/>
+    <read-data  name="Traction"      mesh="TendonMeshLeft"/> -->
 
-    <!-- <read-data name="Displacement"  mesh="TendonMeshLeft"/>
+    <read-data name="Displacement"  mesh="TendonMeshLeft"/>
     <read-data name="Velocity"  mesh="TendonMeshLeft"/>
-    <write-data  name="Traction"      mesh="TendonMeshLeft"/> -->
+    <write-data  name="Traction"      mesh="TendonMeshLeft"/>
 
     <mapping:nearest-neighbor direction="read" from="MuscleMeshLeft" to="TendonMeshLeft" constraint="consistent"/>
     <mapping:nearest-neighbor direction="read" from="MuscleMeshRight" to="TendonMeshRight" constraint="consistent"/>
@@ -64,13 +64,13 @@
     <provide-mesh name="MuscleMeshLeft"  />
     <receive-mesh name="TendonMeshLeft"     from="TendonSolver"/>
 
-    <read-data  name="Displacement"  mesh="MuscleMeshLeft"/>
+    <!-- <read-data  name="Displacement"  mesh="MuscleMeshLeft"/>
     <read-data  name="Velocity"  mesh="MuscleMeshLeft"/>
-    <write-data name="Traction"      mesh="MuscleMeshLeft"/>
+    <write-data name="Traction"      mesh="MuscleMeshLeft"/> -->
 
-    <!-- <write-data  name="Displacement"  mesh="MuscleMeshLeft"/>
+    <write-data  name="Displacement"  mesh="MuscleMeshLeft"/>
     <write-data  name="Velocity"  mesh="MuscleMeshLeft"/>
-    <read-data name="Traction"      mesh="MuscleMeshLeft"/> -->
+    <read-data name="Traction"      mesh="MuscleMeshLeft"/>
 
     <mapping:nearest-neighbor direction="read" from="TendonMeshLeft" to="MuscleMeshLeft" constraint="consistent"/>
     <export:vtu directory="preCICE-output"/>
@@ -101,12 +101,12 @@
     <time-window-size value="0.01"/>   
 
     <acceleration:IQN-ILS>
-      <data name="Displacement" mesh="TendonMeshLeft"/>
+      <!-- <data name="Displacement" mesh="TendonMeshLeft"/>
       <data name="Velocity" mesh="TendonMeshLeft"/>
-      <data name="Traction" mesh="MuscleMeshLeft"/>
-      <!-- <data name="Traction" mesh="TendonMeshLeft"/>
+      <data name="Traction" mesh="MuscleMeshLeft"/> -->
+      <data name="Traction" mesh="TendonMeshLeft"/>
       <data name="Displacement" mesh="MuscleMeshLeft"/>
-      <data name="Velocity" mesh="MuscleMeshLeft"/> -->
+      <data name="Velocity" mesh="MuscleMeshLeft"/>
       <data name="Displacement" mesh="TendonMeshRight"/>
       <data name="Velocity" mesh="TendonMeshRight"/>
       <data name="Traction" mesh="MuscleMeshRight"/>
@@ -116,25 +116,25 @@
 
     <max-iterations value="25" />
 
-    <relative-convergence-measure limit="1e-2" data="Displacement" mesh="TendonMeshLeft" strict="0"/>
+    <!-- <relative-convergence-measure limit="1e-2" data="Displacement" mesh="TendonMeshLeft" strict="0"/>
     <relative-convergence-measure limit="1e-2" data="Velocity" mesh="TendonMeshLeft" strict="0"/>
-    <absolute-convergence-measure limit="1e-1" data="Traction" mesh="MuscleMeshLeft" strict="0"/>
+    <absolute-convergence-measure limit="1e-1" data="Traction" mesh="MuscleMeshLeft" strict="0"/> -->
 
-    <!-- <relative-convergence-measure limit="1e-2" data="Displacement" mesh="MuscleMeshLeft" strict="0"/>
+    <relative-convergence-measure limit="1e-2" data="Displacement" mesh="MuscleMeshLeft" strict="0"/>
     <relative-convergence-measure limit="1e-2" data="Velocity" mesh="MuscleMeshLeft" strict="0"/>
-    <absolute-convergence-measure limit="1e-1" data="Traction" mesh="TendonMeshLeft" strict="0"/> -->
+    <absolute-convergence-measure limit="1e-1" data="Traction" mesh="TendonMeshLeft" strict="0"/>
 
     <relative-convergence-measure limit="1e-2" data="Displacement" mesh="TendonMeshRight" strict="0"/>
     <relative-convergence-measure limit="1e-2" data="Velocity" mesh="TendonMeshRight" strict="0"/>
     <absolute-convergence-measure limit="1e-1" data="Traction" mesh="MuscleMeshRight" strict="0"/>
-
+<!-- 
     <exchange data="Displacement" mesh="TendonMeshLeft" from="TendonSolver" to="MuscleSolverLeft"/>  
     <exchange data="Velocity" mesh="TendonMeshLeft" from="TendonSolver" to="MuscleSolverLeft"/>  
-    <exchange data="Traction" mesh="MuscleMeshLeft" from="MuscleSolverLeft" to="TendonSolver"/>  
-<!-- 
+    <exchange data="Traction" mesh="MuscleMeshLeft" from="MuscleSolverLeft" to="TendonSolver"/>   -->
+
     <exchange data="Displacement" mesh="MuscleMeshLeft" from="MuscleSolverLeft" to="TendonSolver"/>  
     <exchange data="Velocity" mesh="MuscleMeshLeft" from="MuscleSolverLeft" to="TendonSolver"/>  
-    <exchange data="Traction" mesh="TendonMeshLeft" from="TendonSolver" to="MuscleSolverLeft"/>   -->
+    <exchange data="Traction" mesh="TendonMeshLeft" from="TendonSolver" to="MuscleSolverLeft"/>  
 
     <exchange data="Displacement" mesh="TendonMeshRight" from="TendonSolver" to="MuscleSolverRight"/>  
     <exchange data="Velocity" mesh="TendonMeshRight" from="TendonSolver" to="MuscleSolverRight"/>  
